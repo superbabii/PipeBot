@@ -3,13 +3,12 @@ import requests
 import json
 import time
 from prefect import flow, task, get_run_logger
-from prefect.logging import get_run_logger
-from prefect.task_runners import SequentialTaskRunner
 from prefect.blocks.system import Secret
 
 # Replace with your actual Telegram token and chat ID from Prefect Secrets
 TELEGRAM_TOKEN = Secret.load("telegram-bot-token").get()
 CHAT_ID = Secret.load("telegram-chat-id").get()
+
 
 # Helper function to send a Telegram notification
 def send_telegram_message(token, chat_id, message):
@@ -65,7 +64,7 @@ def notify_completion():
     logger.info("Notification sent to Telegram.")
 
 # The main flow that orchestrates the data pipeline
-@flow(task_runner=SequentialTaskRunner())
+@flow
 def data_pipeline(filepath, output_path):
     data = load_data(filepath)
     processed_data = []
