@@ -1,0 +1,11 @@
+version: 1
+deployments:
+  - name: data-pipeline
+    entrypoint: data_pipeline.py:data_pipeline
+    schedule:
+      cron: "0 * * * *"  # Run hourly
+    work_pool:
+      name: default-agent-pool
+      queues:
+        - api-queue
+    tags: []

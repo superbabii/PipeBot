@@ -1,0 +1,4 @@
+prefect
+pandas
+requests
+python-telegram-bot
