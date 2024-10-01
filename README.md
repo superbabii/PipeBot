@@ -1,5 +1,7 @@
 # PipeBot
 
+<img src="result.png" alt="PipeBot">
+
 This project implements a data processing pipeline using Prefect 3.0. The pipeline performs the following tasks:
 
 1. Loads data from a CSV file.
